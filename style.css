@@ -1,0 +1,273 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tipografía */
+body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    margin: 0; /* Eliminar márgenes del body */
+    background-image: url('img/ModularTex.png');
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    min-height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana */
+    min-width: 400px;
+}
+/* Listas */
+ul, ol , li{
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Botones */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Formularios */
+input, button, textarea, select {
+    font: inherit;
+}
+
+
+
+/* Estilos generales del header */
+.header {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;    
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px; /* Añadir un padding general */
+    transition: all .50s ease;
+    height: 100px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 80px;
+}
+
+.navbar{
+    display: flex;
+}
+
+.navbar a{
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0px 30px;
+    transition: all .50s ease;
+}
+
+.main{
+    display: flex;
+    align-items: center;
+}
+
+.main a{
+    margin-right: 25px;
+    margin-left: 10px ;
+    font-size: 1.3rem;
+    font-weight: 500;
+    transition: all .50s ease;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+}
+.user i{
+    color: #333;
+    margin-right: 7px;
+}
+.main a:hover{
+    color: rebeccapurple;
+}
+
+#menu-icon{
+    font-size: 25px;
+    color: black;
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+}
+
+@media (width <= 1000px){
+    .header{
+        padding: 14px 2%;
+        transition: .2s;
+    }
+
+    .navbar a{
+        padding: 5px 0;
+        margin: 0px 20px;
+
+    }
+}
+
+@media (width <= 1000px){
+    #menu-icon{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 270px;
+        height: 29vh;
+        background-color: greenyellow;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 10px;
+        transition: all .50s ease;
+
+    }
+    .navbar a{
+        display: block;
+        margin: 12px 0;
+        padding: 0 25px;
+        transition: all .50s ease;
+    }
+    .navbar a:hover{
+        color: aqua;
+        transform:  translateY(5px);
+    }
+    .navbar a.active{
+        color: black;
+    }
+    .navbar.open{
+        right: 2%;
+    }
+}
+
+
+/*Container*/
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Dos columnas */
+    grid-template-rows: 1fr 1fr; /* Una fila para texto y otra para la imagen */
+    height: calc(100vh - 100px); /* Altura total menos el header */
+    position: absolute; /* Posiciona el contenedor de forma absoluta */
+    bottom: 0; 
+    width: 100%; 
+}
+
+
+.text-content {
+    margin-top: 20%;
+    grid-area: 1 / 1 / 2 / 2;
+    max-width: 100%;
+    align-self: start; /* Mantén el h2 y el párrafo en la parte superior */
+}
+
+.text-content h2 {
+    font-size: 80px;
+}
+
+.text-content p {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.img-content {
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.img-content img {
+    width: 300px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Media Queries para pantallas más pequeñas */
+@media (width <= 1000px) {
+    .container {
+        grid-template-rows: auto; /* Ajuste dinámico del tamaño de filas */
+        height: auto; /* La altura se ajusta automáticamente */
+    }
+    .img-content img{
+        min-width: 300px;
+    }
+
+
+
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 1440px) {
+    .text-content{
+        margin-top: 40%;
+        margin-left: 30px;
+    }
+
+    .text-content h2 {
+        font-size: 60px; /* Tamaño más pequeño para pantallas medianas */
+    }
+
+    .text-content p {
+        font-size: 18px;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .text-content h2 {
+        font-size: 40px; /* Tamaño más pequeño aún para pantallas pequeñas */
+
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas, como teléfonos */
+@media (max-width: 480px) {
+    .text-content h2 {
+        font-size: 30px; /* Tamaño más pequeño para móviles */
+    }
+
+    .text-content p {
+        font-size: 14px;
+    }
+}
+
